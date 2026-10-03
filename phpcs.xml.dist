@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<ruleset name="Simple lightGallery">
+	<description>WordPress Coding Standards for Simple lightGallery (PHP).</description>
+
+	<!-- Scan the current directory. -->
+	<file>.</file>
+
+	<!-- Only scan PHP files; JS is linted with ESLint. -->
+	<arg name="extensions" value="php"/>
+
+	<!-- Exclude third-party/bundled libraries and build artifacts. -->
+	<exclude-pattern>*/assets/lightgallery/*</exclude-pattern>
+	<exclude-pattern>*/assets/select2/*</exclude-pattern>
+	<exclude-pattern>*/node_modules/*</exclude-pattern>
+	<exclude-pattern>*/vendor/*</exclude-pattern>
+
+	<!-- Show sniff codes and progress. -->
+	<arg value="ps"/>
+
+	<!-- Minimum supported WordPress version. -->
+	<config name="minimum_wp_version" value="5.3"/>
+
+	<!-- The WordPress Coding Standards ruleset. -->
+	<rule ref="WordPress"/>
+
+	<!-- Check PHP cross-version compatibility (minimum supported PHP). -->
+	<config name="testVersion" value="7.4-"/>
+	<rule ref="PHPCompatibilityWP"/>
+
+	<!-- The main plugin file keeps its plugin-slug name and the two include
+	     files keep their established (historical) short names, so the
+	     class-file-naming convention does not apply to them. -->
+	<rule ref="WordPress.Files.FileName.InvalidClassFileName">
+		<exclude-pattern>*/simple-lightgallery.php</exclude-pattern>
+		<exclude-pattern>*/includes/class-slg-admin.php</exclude-pattern>
+		<exclude-pattern>*/includes/class-slg-front.php</exclude-pattern>
+	</rule>
+
+	<!-- Verify text domain and global prefixes. The plugin's strings use the
+	     'simplelightGallery' text domain; changing it would desync existing
+	     translations (a functional change), so it is declared as-is. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="simplelightGallery"/>
+			</property>
+		</properties>
+	</rule>
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
+		<properties>
+			<property name="prefixes" type="array">
+				<element value="simplelightGallery"/>
+				<element value="Simple_lightGallery"/>
+			</property>
+		</properties>
+	</rule>
+
+	<!-- The plugin deliberately brands every class and method with the
+	     mixed-case "simplelightGallery" / "Simple_lightGallery" identifier.
+	     These symbols are referenced only internally, so the established
+	     public names are kept rather than renamed (a purely cosmetic churn);
+	     the camelCase naming sniffs are therefore silenced. -->
+	<rule ref="PEAR.NamingConventions.ValidClassName">
+		<severity>0</severity>
+	</rule>
+	<rule ref="WordPress.NamingConventions.ValidFunctionName.MethodNameInvalid">
+		<severity>0</severity>
+	</rule>
+</ruleset>

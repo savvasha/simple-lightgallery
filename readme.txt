@@ -3,9 +3,9 @@ Contributors: savvasha
 License: GPLv2 or later
 Tags: lightGallery, gallery, photography, responsive, jQuery
 Requires at least: 5.3
-Tested up to: 6.6
-Requires PHP: 7.2
-Stable tag: 1.7.2
+Tested up to: 7.1
+Requires PHP: 7.4
+Stable tag: 1.7.3
 
 An integration of lightGallery JavaScript v1 and v2 to WordPress
 
@@ -51,6 +51,12 @@ Some of lightGallery core features ([taken from lightGallery officially site](ht
 1.  lightGallery Customization Options using v2 of the script
 
 == Changelog ==
+
+= 1.7.3 =
+
+* Tested up to WordPress 7.1
+* Fix: Hide the selectors option when lightGallery v2 is selected
+* DEV: Codebase brought in line with WordPress Coding Standards; no functional changes
 
 = 1.7.2 =
 

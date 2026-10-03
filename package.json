@@ -1,0 +1,16 @@
+{
+	"name": "simple-lightgallery",
+	"version": "1.7.3",
+	"description": "Linting tooling for Simple lightGallery.",
+	"private": true,
+	"author": "Savvas",
+	"license": "GPL-2.0-or-later",
+	"scripts": {
+		"lint:js": "eslint assets/select2/simple.lightgallery.select2.js",
+		"lint:js:fix": "eslint assets/select2/simple.lightgallery.select2.js --fix"
+	},
+	"devDependencies": {
+		"@wordpress/eslint-plugin": "^27.0.0",
+		"eslint": "^9.0.0"
+	}
+}
